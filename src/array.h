@@ -27,8 +27,6 @@ namespace shiny
         void set(const dataType& data, const size_t& index);
         const dataType& get(const size_t& index) const;
         dataType& at(const size_t& index);
-        bool isEmpty();
-        bool isFull();
         void fill(const dataType& data);
         template<size_t otherArraySize>
         Array<dataType, arraySize + otherArraySize> combine(const Array<dataType, otherArraySize>& other);
