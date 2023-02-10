@@ -24,7 +24,7 @@ namespace shiny
     };
 
     template<typename dataType, size_t arraySize>
-    dataType* Array<dataType, arraySize>::data() const
+    dataType* Array<dataType, arraySize>::cArray() const
     {
         return m_data;
     };

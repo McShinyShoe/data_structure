@@ -22,7 +22,7 @@ namespace shiny
         const_iterator cbegin() const;
         const_iterator cend() const;
 
-        dataType* data() const;
+        dataType* cArray() const;
         size_t size() const;
         void set(const dataType& data, const size_t& index);
         const dataType& get(const size_t& index) const;
