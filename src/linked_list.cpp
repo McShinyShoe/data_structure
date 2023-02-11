@@ -5,18 +5,11 @@
 namespace shiny
 {
     template <typename dataType>
-    SinglyLinkedList<dataType>::iterator::iterator() : m_ptr(nullptr)
-    {
-
-    }
+    SinglyLinkedList<dataType>::iterator::iterator() : m_ptr(nullptr) {}
     template <typename dataType>
-    SinglyLinkedList<dataType>::iterator::iterator(const iterator &other) : m_ptr(other.m_ptr)
-    {
-    }
+    SinglyLinkedList<dataType>::iterator::iterator(const iterator &other) : m_ptr(other.m_ptr) {}
     template <typename dataType>
-    SinglyLinkedList<dataType>::iterator::iterator(pointer node) : m_ptr(node)
-    {
-    }
+    SinglyLinkedList<dataType>::iterator::iterator(pointer node) : m_ptr(node) {}
     template <typename dataType>
     typename SinglyLinkedList<dataType>::iterator::reference SinglyLinkedList<dataType>::iterator::operator*()
     {
@@ -40,19 +33,12 @@ namespace shiny
         operator++();
         return old;
     }
-    ////////////////////
     template <typename dataType>
-    SinglyLinkedList<dataType>::const_iterator::const_iterator() : m_ptr(nullptr)
-    {
-    }
+    SinglyLinkedList<dataType>::const_iterator::const_iterator() : m_ptr(nullptr) {}
     template <typename dataType>
-    SinglyLinkedList<dataType>::const_iterator::const_iterator(const const_iterator &other) : m_ptr(other.m_ptr)
-    {
-    }
+    SinglyLinkedList<dataType>::const_iterator::const_iterator(const const_iterator &other) : m_ptr(other.m_ptr) {}
     template <typename dataType>
-    SinglyLinkedList<dataType>::const_iterator::const_iterator(pointer node) : m_ptr(node)
-    {
-    }
+    SinglyLinkedList<dataType>::const_iterator::const_iterator(pointer node) : m_ptr(node) {}
     template <typename dataType>
     typename SinglyLinkedList<dataType>::const_iterator::reference SinglyLinkedList<dataType>::const_iterator::operator*() const
     {
@@ -76,7 +62,6 @@ namespace shiny
         operator++();
         return old;
     }
-    ////////////////////
     template <typename dataType>
     typename SinglyLinkedList<dataType>::iterator SinglyLinkedList<dataType>::begin()
     {
@@ -118,7 +103,7 @@ namespace shiny
     void SinglyLinkedList<dataType>::set(const dataType &data, size_t index)
     {
         Node* cursor = m_head;
-        while(--index)
+        while(index--)
         {
             if(cursor == nullptr) return;
             cursor = cursor->link;
@@ -130,7 +115,7 @@ namespace shiny
     const dataType &SinglyLinkedList<dataType>::get(size_t index) const
     {
         Node* cursor = m_head;
-        while(--index)
+        while(index--)
         {
             //if(cursor == nullptr);
             cursor = cursor->link;
@@ -141,7 +126,7 @@ namespace shiny
     dataType &SinglyLinkedList<dataType>::at(size_t index)
     {
         Node* cursor = m_head;
-        while(--index)
+        while(index--)
         {
             //if(cursor == nullptr);
             cursor = cursor->link;
@@ -171,11 +156,11 @@ namespace shiny
     {
         if(m_head == nullptr) 
         {
-            m_head = new Node {data};
+            m_head = new Node {data, nullptr};
             return;
         }
         Node* cursor = back();
-        cursor->link = new Node {data};
+        cursor->link = new Node{data, nullptr};
     }
     template <typename dataType>
     void SinglyLinkedList<dataType>::pushAt(const dataType &data, size_t index)
@@ -253,7 +238,7 @@ namespace shiny
         Node* cursor = back();
         while(currentSize < newSize)
         {
-            cursor->link = new Node;
+            cursor->link = new Node {dataType(), nullptr};
             cursor = cursor->link;
         }
         while(currentSize > newSize)
@@ -264,10 +249,7 @@ namespace shiny
 
     }
     template <typename dataType>
-    SinglyLinkedList<dataType>::SinglyLinkedList()
-    {
-        
-    }
+    SinglyLinkedList<dataType>::SinglyLinkedList() {}
     template <typename dataType>
     SinglyLinkedList<dataType>::SinglyLinkedList(const SinglyLinkedList &other)
     {
@@ -276,12 +258,12 @@ namespace shiny
         {
             if(m_head == nullptr)
             {
-                m_head = new Node {*it};
+                m_head = new Node {it->data, nullptr};
                 cursor = m_head;
             }
             else
             {
-                cursor->link = new Node {*it};
+                cursor->link = new Node {it->data, nullptr};
                 cursor = cursor->link;
             }
         };
@@ -294,12 +276,12 @@ namespace shiny
         {
             if(m_head == nullptr)
             {
-                m_head = new Node {data};
+                m_head = new Node{data, nullptr};
                 cursor = m_head;
             }
             else
             {
-                cursor->link = new Node {data};
+                cursor->link = new Node{data, nullptr};
                 cursor = cursor->link;
             }
         };
@@ -312,12 +294,12 @@ namespace shiny
         {
             if(m_head == nullptr)
             {
-                m_head = new Node {array[i]};
+                m_head = new Node {array[i], nullptr};
                 cursor = m_head;
             }
             else
             {
-                cursor->link = new Node {array[i]};
+                cursor->link = new Node {array[i], nullptr};
                 cursor = cursor->link;
             }
         };
