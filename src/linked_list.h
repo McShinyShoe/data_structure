@@ -210,7 +210,13 @@ namespace shiny
         DoublyLinkedList(const std::initializer_list<dataType>& list);
         DoublyLinkedList(const dataType* array, const size_t& size);
     };
-
+#ifdef SINGLE_LINKED_LIST_DEFAULT
+        template<typename dataType>
+        using LinkedList = SinglyLinkedList<dataType>;
+#else
+        template<typename dataType>
+        using LinkedList = DoublyLinkedList<dataType>;
+#endif
 }
 
 #include "linked_list.cpp"
